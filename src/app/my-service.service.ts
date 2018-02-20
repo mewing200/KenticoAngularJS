@@ -9,7 +9,6 @@ export class MyServiceService {
   public changed$: Observable<any>;
   protected change = new Subject<any>();
 
-
   constructor() {
     this.changed$ = this.change.asObservable();
   }
