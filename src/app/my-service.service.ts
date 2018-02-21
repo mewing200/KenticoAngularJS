@@ -3,7 +3,6 @@ import { Subject } from 'rxjs/Subject';
 import { Observable } from 'rxjs/Observable';
 
 
-
 @Injectable()
 export class MyServiceService {
   public changed$: Observable<any>;
@@ -13,12 +12,12 @@ export class MyServiceService {
     this.changed$ = this.change.asObservable();
   }
 
-
-
   startMySubject = (msg) => {
     window.setTimeout( () => {
       this.change.next(msg);
     }, 4000);
   }
+
+
 
 }

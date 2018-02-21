@@ -1,6 +1,13 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild, ElementRef } from '@angular/core';
 import { OnInit, OnDestroy } from '@angular/core';
 import { MyServiceService } from './my-service.service';
+import { Observable } from 'rxjs/Observable';
+import { Subject } from 'rxjs/Subject';
+import { debounceTime, map, first, distinctUntilChanged, delay } from 'rxjs/operators';
+import { fromEvent } from 'rxjs/observable/fromEvent';
+
+
+
 import * as moment from 'moment';
 
 @Component({
@@ -13,6 +20,9 @@ import * as moment from 'moment';
 export class AppComponent implements OnInit, OnDestroy {
   title = 'app';
   str: string;
+  inputdata: string;
+
+  @ViewChild('inputthis') private inputthis: ElementRef;
 
   constructor(private myservice: MyServiceService) {
   }
@@ -23,6 +33,22 @@ export class AppComponent implements OnInit, OnDestroy {
         alert(data);
       }
     );
+
+    const inputElement = document.getElementById('inputstuff');
+
+    const keyPress$ = fromEvent<ElementRef>(inputElement, 'keypress')
+    .pipe(
+      delay(500)
+
+    );
+
+    keyPress$.subscribe(
+      (event: any) => {
+         this.inputdata = (this.inputdata ? this.inputdata : '') + event.key;
+      }
+    );
+
+
 
     const now = moment.now();
     const formatit = moment(moment.now()).format('LLL');
