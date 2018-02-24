@@ -1,3 +1,20 @@
-<p>
-  mycomponent works!
-</p>
+
+  <div *ngIf="loading">
+    ....getting data
+  </div>
+  <div *ngIf="!loading">
+    this is what i got.
+    <div>
+      {{subscribedData}}
+    </div>
+    <div>
+       {{subscribedData.name}}
+    </div>
+    <div>
+      {{subscribedData.address}}
+    </div>
+  </div>
+  <div>
+    {{subjectStuff.name}} & {{subjectStuff.address}}
+  </div>
+
