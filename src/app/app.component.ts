@@ -1,12 +1,10 @@
-import { Component, ViewChild, ElementRef } from '@angular/core';
+import { Component, ViewChild, AfterViewInit, ElementRef } from '@angular/core';
 import { OnInit, OnDestroy } from '@angular/core';
 import { MyServiceService } from './my-service.service';
 import { Observable } from 'rxjs/Observable';
 import { Subject } from 'rxjs/Subject';
 import { debounceTime, map, first, distinctUntilChanged, delay } from 'rxjs/operators';
 import { fromEvent } from 'rxjs/observable/fromEvent';
-
-
 
 import * as moment from 'moment';
 
@@ -17,16 +15,30 @@ import * as moment from 'moment';
 })
 
 
-export class AppComponent implements OnInit, OnDestroy {
+export class AppComponent implements OnInit, OnDestroy, AfterViewInit {
   title = 'app';
   str: string;
   inputdata: string;
 
   @ViewChild('inputthis') private inputthis: ElementRef;
+  @ViewChild('mytest') private mytest: ElementRef;
+  @ViewChild('morecontent') private morecontent: ElementRef;
 
   constructor(private myservice: MyServiceService) {
   }
 
+
+  performAction($event) {
+    alert('hit me');
+  }
+
+
+  ngAfterViewInit() {
+    console.log(this.mytest);
+    console.log(this.morecontent);
+    this.morecontent.nativeElement.textContent = 'this is even more content';
+
+  }
   ngOnInit() {
     this.myservice.changed$.subscribe(
       (data: any) => {
