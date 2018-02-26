@@ -1,0 +1,14 @@
+
+    <input id="inputstuff" #inputthis size='20'>
+    <button (click)="sendInput(inputthis.value)">Send Input</button>
+    <div>
+      {{inputdata}}
+    </div>
+<app-mycomponent></app-mycomponent>
+
+<div #mytest>
+  <div >more content
+    <div #morecontent>morecontent</div>
+  </div>
+</div>
+<button routerLink='/feature'>Lazy Feature</button>
