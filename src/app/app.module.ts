@@ -6,8 +6,10 @@ import { AppComponent } from './app.component';
 import { MyServiceService } from './my-service.service';
 import { MycomponentComponent } from './mycomponent/mycomponent.component';
 import { MainComponent } from './main/main.component';
-
-
+import { PanelModule } from 'primeng/panel';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { KeystrokeComponent } from './keystroke/keystroke.component';
+import { HeaderComponent } from './header/header.component';
 
 export const routes: Routes = [
   { path: '', component: MainComponent, pathMatch: 'full'},
@@ -18,10 +20,14 @@ export const routes: Routes = [
   declarations: [
     AppComponent,
     MycomponentComponent,
-    MainComponent
+    MainComponent,
+    KeystrokeComponent,
+    HeaderComponent
   ],
   imports: [
     BrowserModule,
+    PanelModule,
+    BrowserAnimationsModule,
     RouterModule.forRoot(routes)
   ],
   providers: [MyServiceService],

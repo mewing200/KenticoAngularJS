@@ -1,0 +1,10 @@
+<p-panel header="subscription to keystrokes">
+  <div>
+    <input id="inputstuff" #inputthis size='20'>
+    <button (click)="sendInputToAlert(inputthis.value)">Send Input</button>
+    <button (click)="clearInput()">Clear</button>
+    <div>
+      {{inputdata}}
+    </div>
+  </div>
+</p-panel>
